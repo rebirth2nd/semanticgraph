@@ -1,0 +1,6 @@
+# This is the pip install requirements file. Run the command pip install -r 
+# requirements.txt to create environment for this project
+
+Django>=1.4.1
+py2neo==1.5.1
+pytz==2013b

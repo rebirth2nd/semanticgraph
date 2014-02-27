@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %} Invisdom {% endblock %}
+
+{% block headadditional %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/graph.css" type="text/css" />
+{% endblock %}
+
+{% block bodytagdef %}
+<body>
+{% endblock %}
+
+{% block additionalnavbar %}
+<form id="visform" method="POST" class="navbar-form navbar-left" role="search">
+    {% csrf_token %}
+    <div class="form-group">
+      <input id="searchboxvalue" type="text" name="q"
+      placeholder="Entity of interest" class="form-control">
+    </div>
+
+    <select class="form-control" id="parameterLayer" name="radius">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+
+    <button type="submit" class="btn btn-success" onclick="return normalSearch();">Visualize!</button>
+    <button class="btn btn-success" name="toRandom" id="randomButton" type="submit" value="random" onclick="return randomBuild();"><i class="fa fa-rocket fa-lg" style="padding: 0 5px 0 0"></i>Lucky Strike!</button>
+</form>
+{% endblock %}
+
+{% block containercontent %}
+   
+  <img src="{{ STATIC_URL }}media/loading.gif" alt="Scanning..." id="loading_img" style="visibility:visible;" />
+
+  <div id='msgbar' class="alert alert-success alert-dismissable zindex5">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <span id="msgvalue">Loading...</span>
+  </div>
+  {% include "forcelayout.html" %}
+{% endblock %}
+
+{% block bodyscriptadd %}
+  <script>
+     Modernizr.load({
+       test: Modernizr.inputtypes.range,
+       nope: "{{ STATIC_URL }}js/html5slider.js"
+     });
+  </script>
+
+  <script src="{{ STATIC_URL }}js/d3v2.js"></script>
+  <script src="{{ STATIC_URL }}js/purejs.js"></script>
+  <script type="text/javascript">
+      var imageByType = {
+                "PERSON": "{{ STATIC_URL }}media/person.svg",
+                "LOCATION": "{{ STATIC_URL }}media/location.svg",
+                "ORGANIZATION": "{{ STATIC_URL }}media/organization.svg",
+                "MISC": "{{ STATIC_URL }}media/misc.svg"
+      };
+
+      grouplabel = {{ grouplabel|safe|default:"null" }};
+      centerinfo = {{ center|safe|default:"null" }};
+      pathinfo = {{ nodeNotInPath|safe|default:"null" }};
+
+      parameters = {{ parameters|safe }};
+      document.title = "Invisom Results Page: " + parameters['rawquery'];
+
+      data = {{ jsondata|safe|default:"null" }};
+      checker = {{ checker|safe|default:"null" }};
+      errormsg = {{ errormsg|safe|default:"null" }};
+  </script>
+  <script src="{{ STATIC_URL }}js/ajax.js"></script>
+{% endblock %}

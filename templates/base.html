@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+  <title> {% block title %} {% endblock %} </title>
+  {% block headcommon %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {% block headkeywords %}{% endblock%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% endblock%}
+
+  {% block headscript %}{% endblock %}
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  {% block headadditional %}{% endblock %}
+  <script src="{{ STATIC_URL }}js/modernizr.custom.js"></script>
+</head>
+
+{% block bodytagdef %}
+<body>
+{% endblock%}
+
+  {% block navbar %}
+    <div id="wrap">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="/home/">your app name<sup>TM</sup><small>(Beta)</small></a>
+        </div><!-- nav-header -->
+
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" data-toggle="modal" data-target="#about">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+          {% block additionalnavbar %}{% endblock %}
+        </div><!-- nav-collapse -->
+    </nav><!-- navbar -->
+  {% endblock %}
+
+  <!-- Modal "about" -->
+  <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">You, us, and our mission</h4>
+        </div>
+        <div class="modal-body">
+          <p> first line </p>
+          <p> second line </p>
+          <p> unsurprising third line </p>
+          <p> see-you fourth line </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal -->
+
+  {% block containercontent %}{% endblock %}
+  </div><!-- wrap end -->
+
+  {% block containerfooter %}
+    <div id="footer">
+
+	<div class="container">
+          <div class="row">
+            <div class="col-sm-5 col-md-5">
+              Copyright &copy 2012-2013 Invisdom Inc. All rights reserved.
+            </div>
+            <div class="col-sm-2 col-md-2">      
+              <a href="/terms/">Terms of Use/Privacy</a>
+            </div>
+      
+            <div class="col-sm-5 col-md-5 visible-lg">
+              <a href="https://twitter.com/intent/tweet?button_hashtag=inVisdom&text=Check%20out%20invisdom.com,%20a%20cool%20exploration%20engine!" class="twitter-hashtag-button" data-related="invisdom">Tweet #Invisdom</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              <a href="https://twitter.com/invisdom" class="twitter-follow-button" data-show-count="false"  data-show-screen-name="false" data-dnt="true">Follow @invisdom</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+              <script type="IN/Share" data-url="http://www.invisdom.com" data-counter="right"></script>
+          {% comment %}
+          Note the use of(style="vertical-align:top;zoom:1;*display:inline") in
+          facebook button. It is needed to solve the vertical misalignment
+          problem beween facebook and other buttons. (zoom:1 and
+          *display:inline) hack is said to be needed for IE7 so that the
+          buttons show up side by side.
+          http://stackoverflow.com/questions/4770372/misalignment-of-facebook-twitter-buttons
+          {% endcomment %}
+              <div class="fb-like" data-href="http://www.invisdom.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" style="vertical-align:top;zoom:1;*display:inline"></div>
+            </div>
+
+          </div>
+        </div>
+      
+    </div>
+  {% endblock %}
+
+  {% block bodyscript %}
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    
+    {% block bodyscriptadd %}{% endblock %}
+
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Google analytics -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-35548411-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+                  'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  {% endblock %}
+
+</body>
+</html>

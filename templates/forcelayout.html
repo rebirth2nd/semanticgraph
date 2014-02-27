@@ -1,0 +1,45 @@
+<div id="svgcontainer" class="zindex4"></div>
+
+  <div class="panel panel-primary col-md-2 zindex5 hidden-xs hidden-sm" id="toolpanel">
+    <div class="panel-heading headpadding">
+      <a class="btn btn-primary" style="padding: 7px 33px 0 18px;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <div class="row">
+          <div class="col-md-2">
+          <i class="fa fa-wrench fa-lg icon"></i>
+          </div>
+          <div class="col-md-4">
+          <p>GraphToolkit</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div id="nodeslider" class="toolpadding">
+        Node filter:
+        <br>
+        <input type="range" class="unstyled" id="nodeslidervalue" min="8" max="16" step="any" onchange="return nodeFilter(event);" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+        <br>
+      </div>
+
+      <div id="linkslider" class="toolpadding">
+        Edge filter:
+        <br>
+        <input type="range" class="unstyled" id="linkslidervalue" min="0" max="4" step="any" onchange="return nodeFilter(event);">
+        <br>
+      </div>
+
+      <div id = "bottombox" class="toolpadding">
+        <button id="resetButton" type="button" class="btn btn-success" onclick="return resetEverthing(event);" data-toggle="tooltip" data-placement="right" title="Tooltip on bottom">Reset</button>
+      </div>
+
+    </div><!--  panelcollapse end -->
+  </div><!-- panel end -->
+
+
+  <div class="row fullwidth">
+    <div id="infocontainer" class="col-md-offset-9 col-md-3 hidden-xs hidden-sm zindex5">
+      <button type="button" id="infobutton" class="close" aria-hidden="true">&times;</button>
+      <p id="infocontent"><i class="fa fa-spinner fa-spin" style="padding:0 10px 0 10px"></i>Retrieving documents</p>
+    </div>
+  </div><!-- row end -->

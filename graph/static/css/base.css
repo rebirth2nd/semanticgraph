@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* base template CSS */
+
+.form-inline .form-group input#searchboxvalue{
+	width:300px;
+}
+
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#footer{
+    height: 45px;
+}
+
+#wrap {
+    height: 100%;
+    margin: 0 auto -45px; /* Negative indent footer by its height */
+    padding: 0 0 45px; /* Pad bottom by footer height */
+}
+
+html {
+    height: 100%;
+}
+	
+body {
+    height: 100%;
+    padding-top: 55px; /* space between navbar and msgbar*/
+}	
+
+.navbar-nav > li > a {
+    /* adjust hyperlink menu positions*/
+    padding-top:15px !important; 
+    padding-bottom:0px !important;
+}
+
+.navbar {
+    min-height:45px !important; /* control the overall navbar height*/
+    margin-bottom: 1px !important; /* control the margin to msgbar*/
+}
